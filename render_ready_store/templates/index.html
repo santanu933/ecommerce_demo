@@ -1,10 +1,236 @@
-<!DOCTYPE html><html><head><title>Store</title>
-<style>body{font-family:Arial;margin:20px;background:#f4f4f4}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}.card,.panel{background:#fff;padding:15px;border-radius:10px}</style>
-</head><body><h1>🛒 Ayata Store</h1><div id='products' class='grid'></div>
-<div class='panel'><h2>Customer Details</h2>
-<input id='name' placeholder='Name'><br><input id='phone' placeholder='Phone'><br>
-<textarea id='address' placeholder='Address'></textarea><br>
-<select id='payment'><option>COD</option><option>PREPAID</option></select>
-<h3>Cart</h3><div id='cart'></div><h3 id='total'>₹0</h3>
-<button onclick='placeOrder()'>Place Order</button><pre id='msg'></pre></div>
-<script src="{{ url_for('static', filename='shop.js') }}"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Glory Store</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f7fa;
+}
+
+header{
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+color:white;
+padding:40px;
+text-align:center;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:20px;
+}
+
+.search-box{
+margin-bottom:20px;
+}
+
+.search-box input{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+}
+
+.price{
+color:#2a5298;
+font-weight:bold;
+margin-top:10px;
+}
+
+.stock{
+margin-top:8px;
+font-size:14px;
+}
+
+.instock{
+color:green;
+}
+
+.oos{
+color:red;
+font-weight:bold;
+}
+
+.btn{
+margin-top:10px;
+width:100%;
+padding:12px;
+border:none;
+background:#2a5298;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+.btn:disabled{
+background:#999;
+cursor:not-allowed;
+}
+
+.panel{
+margin-top:30px;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+input,
+textarea,
+select{
+width:100%;
+padding:12px;
+margin-bottom:10px;
+border:1px solid #ddd;
+border-radius:8px;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px;
+margin-bottom:10px;
+background:#f9f9f9;
+border-radius:8px;
+}
+
+.qty-btn{
+padding:5px 10px;
+}
+
+.remove-btn{
+background:red;
+color:white;
+border:none;
+padding:5px 10px;
+}
+
+.place-btn{
+background:green;
+color:white;
+width:100%;
+padding:15px;
+border:none;
+border-radius:8px;
+font-size:16px;
+}
+
+#total{
+margin-top:10px;
+color:#1e3c72;
+}
+
+@media(max-width:768px){
+
+header h1{
+font-size:28px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🛒 Glory Store</h1>
+<p>Electronics Shopping Portal</p>
+
+</header>
+
+<div class="container">
+
+<div class="search-box">
+
+<input
+id="search"
+placeholder="Search Products..."
+onkeyup="renderProducts()">
+
+</div>
+
+<div id="products" class="grid"></div>
+
+<div class="panel">
+
+<h2>Customer Details</h2>
+
+<input id="name" placeholder="Full Name">
+
+<input id="phone" placeholder="Phone Number">
+
+<textarea
+id="address"
+placeholder="Delivery Address"></textarea>
+
+<select id="payment">
+<option>COD</option>
+<option>PREPAID</option>
+</select>
+
+<h2>Your Cart</h2>
+
+<div id="cart"></div>
+
+<h2 id="total">₹0</h2>
+
+<button
+class="place-btn"
+onclick="placeOrder()">
+
+Place Order
+
+</button>
+
+<pre id="msg"></pre>
+
+</div>
+
+</div>
+
+<script src="shop.js"></script>
+
+</body>
+
+</html>
