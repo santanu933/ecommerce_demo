@@ -1,3 +1,5 @@
+console.log("shop.js loaded");
+
 const products = [
 {
 id: 1,
