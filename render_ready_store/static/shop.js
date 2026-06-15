@@ -5,7 +5,7 @@ const products = [
         id: 1,
         name: "Laptop",
         price: 50000,
-        image: "https://via.placeholder.com/300x200?text=Laptop"
+        image: "https://www.pexels.com/photo/macbook-pro-129208/300x200?text=Laptop"
     },
     {
         id: 2,
